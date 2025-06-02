@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Eu te amo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte manuscrita do Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(135deg, #000000 0%, #1a0000 60%, #8b0000 85%, #ff0000 100%);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 24px;
+      color: white;
+      background: transparent;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button::before {
+      content: "💖 ";
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .reveal {
+      animation: fadeIn 1s ease-in-out;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    iframe {
+      margin: 10px auto;
+      border-radius: 12px;
+      max-width: 100%;
+    }
+
+    /* Carrossel */
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      height: 500px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .slides {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slides.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slides img.photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      top: 0;
+      left: 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      animation: float 6s linear infinite;
+      font-size: 20px;
+      z-index: 1000;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="initial">
+  <button onclick="showLove()">Clique</button>
+</div>
+
+<div class="container hidden" id="content">
+  <div class="reveal">
+    <iframe src="https://open.spotify.com/embed/track/2zYj8QBimVP8Knq8tGqCou?utm_source=generator"
+            width="300" height="80" frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy">
+    </iframe>
+
+    <!-- Carrossel de Imagens -->
+    <div class="carousel">
+      <div class="slides active">
+        <img src="assets/foto1.jpeg" class="photo" alt="Foto do casal 1">
+      </div>
+      <div class="slides">
+        <img src="assets/foto2.jpeg" class="photo" alt="Foto do casal 2">
+      </div>
+      <div class="slides">
+        <img src="assets/foto3.jpeg" class="photo" alt="Foto do casal 3">
+      </div>
+      <div class="slides">
+        <img src="assets/foto4.jpeg" class="photo" alt="Foto do casal 4">
+      </div>
+    </div>
+
+    <p>❤️ Eu te amo há:</p>
+    <p id="timer"></p>
+
+    <p>Hoje completamos três anos juntos, e parece que o tempo voou… Vivemos tantas coisas que parece uma vida inteira.
+    Crescemos, aprendemos, rimos, enfrentamos desafios e seguimos sempre lado a lado. Sou eternamente grata por cada momento contigo, por todo o amor, carinho, parceria e paciência (às vezes você se esforça tanto e consegue ter kkk). Que venham os próximos anos e que a gente continue com a mesma alegria em estar juntos, com a cumplicidade e o amor que nos trouxeram até aqui.</p>
+
+    <p>Te amo, hoje e sempre! 🤍</p>
+  </div>
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+  const startDate = new Date("2022-06-05T00:00:00");
+
+  function showLove() {
+    document.getElementById("initial").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
+    setInterval(updateTimer, 1000);
+    spawnHearts();
+    startCarousel();
+  }
+
+  function updateTimer() {
+    const now = new Date();
+    let diff = Math.floor((now - startDate) / 1000);
+
+    const years = Math.floor(diff / (365.25 * 24 * 3600));
+    diff %= Math.floor(365.25 * 24 * 3600);
+    const days = Math.floor(diff / (24 * 3600));
+    diff %= 24 * 3600;
+    const hours = Math.floor(diff / 3600);
+    diff %= 3600;
+    const minutes = Math.floor(diff / 60);
+    const seconds = diff % 60;
+
+    document.getElementById("timer").textContent =
+      `${years} anos, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+  }
+
+  function spawnHearts() {
+    const container = document.getElementById('hearts');
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '💗';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+  }
+
+  function startCarousel() {
+    const slides = document.querySelectorAll(".slides");
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
