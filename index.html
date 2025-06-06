@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Eu te amo</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 130 100%22><text y=%22.9em%22 font-size=%2290%22>🤎</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Fonte manuscrita do Google Fonts -->
+  <meta name="description" content="Uma homenagem de amor com fotos, música e um contador de tempo.">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
   <style>
@@ -33,13 +32,13 @@
       font-size: 24px;
       color: white;
       background: transparent;
-      border: 2px solid #00ffff;
+      border: 2px solid #be791e;
       border-radius: 8px;
       cursor: pointer;
     }
 
     button::before {
-      content: "💖 ";
+      content: "🤎";
     }
 
     .hidden {
@@ -137,7 +136,6 @@
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy">
     </iframe>
 
-    <!-- Carrossel de Imagens -->
     <div class="carousel">
       <div class="slides active">
         <img src="assets/foto1.jpeg" class="photo" alt="Foto do casal 1">
@@ -151,22 +149,56 @@
       <div class="slides">
         <img src="assets/foto4.jpeg" class="photo" alt="Foto do casal 4">
       </div>
+      <div class="slides">
+        <img src="assets/foto5.jpeg" class="photo" alt="Foto do casal 5">
+      </div>
+      <div class="slides">
+        <img src="assets/foto6.jpeg" class="photo" alt="Foto do casal 6">
+      </div>
+      <div class="slides">
+        <img src="assets/foto7.jpeg" class="photo" alt="Foto do casal 7">
+      </div>
+      <div class="slides">
+        <img src="assets/foto8.jpeg" class="photo" alt="Foto do casal 8">
+      </div>
+      <div class="slides">
+        <img src="assets/foto9.jpeg" class="photo" alt="Foto do casal 9">
+      </div>
+      <div class="slides">
+        <img src="assets/foto10.jpeg" class="photo" alt="Foto do casal 10">
+      </div>
     </div>
 
-    <p>❤️ Eu te amo há:</p>
+    <p>🤎 Eu te amo há:</p>
     <p id="timer"></p>
 
-    <p>Hoje completamos três anos juntos, e parece que o tempo voou… Vivemos tantas coisas que parece uma vida inteira.
-    Crescemos, aprendemos, rimos, enfrentamos desafios e seguimos sempre lado a lado. Sou eternamente grata por cada momento contigo, por todo o amor, carinho, parceria e paciência (às vezes você se esforça tanto e consegue ter kkk). Que venham os próximos anos e que a gente continue com a mesma alegria em estar juntos, com a cumplicidade e o amor que nos trouxeram até aqui.</p>
+    <h3>Eu Te Amo, Meu Amor</h3>
 
-    <p>Te amo, hoje e sempre! 🤍</p>
+    <p>
+        Fiz essa homenagem com as minhas habilidades de “seu garoto da TI”, como você diz —
+        <em>privilégios da vida</em>, né?
+    </p>
+
+    <p>
+        Quero que saiba que eu te amo infinitamente. Não queria deixar essa data passar em branco,
+        mesmo com o Dia dos Namorados tão perto. Quis mostrar um pouquinho de tudo que a gente já
+        passou e ainda vai passar.
+        Queria colocar todas as fotos, mas isso seria praticamente impossível!
+    </p>
+        
+    <p>
+        Você é a razão do meu sorriso, a luz dos meus dias e a paz do meu coração. Cada momento ao seu lado
+        é um presente que eu valorizo profundamente.
+    <p>
+        Eu te amo mais a cada dia, minha preta linda. 🤎
+    </p>
   </div>
 </div>
 
 <div class="hearts" id="hearts"></div>
 
 <script>
-  const startDate = new Date("2022-06-05T00:00:00");
+  const startDate = new Date("2023-07-08T00:00:00");
 
   function showLove() {
     document.getElementById("initial").classList.add("hidden");
@@ -190,7 +222,7 @@
     const seconds = diff % 60;
 
     document.getElementById("timer").textContent =
-      `${years} anos, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+      `${years} ano, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
   }
 
   function spawnHearts() {
@@ -198,7 +230,7 @@
     setInterval(() => {
       const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.textContent = '💗';
+      heart.textContent = '🤎';
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       container.appendChild(heart);
